@@ -5,4 +5,5 @@ public class ProductNames {
     public static final String AGED_BRIE = "Aged Brie";
     public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
     public static final String UNKNOWN = "Foo";
+    public static final String CONJURED = "Conjured Mana Cake";
 }

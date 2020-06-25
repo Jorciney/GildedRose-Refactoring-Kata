@@ -179,6 +179,28 @@ class GildedRoseTest {
     }
 
 
+    @Test
+    public void testUpdateQuality_givenSellIn5AndQuality6ForConjured_thenReturnQuality4() {
+        GildedRose actual = createAndUpdateGildedRose(CONJURED, 3, 6);
+
+        GildedRoseAssertion.assertThat(actual)
+                .hasItem(0)
+                .hasItemName(CONJURED)
+                .hasSellIn(2)
+                .hasQuality(4);
+    }
+
+    @Test
+    public void testUpdateQuality_givenNegativeSellInAndQuality6ForConjured_thenReturnQuality2() {
+        GildedRose actual = createAndUpdateGildedRose(CONJURED, -1, 6);
+
+        GildedRoseAssertion.assertThat(actual)
+                .hasItem(0)
+                .hasItemName(CONJURED)
+                .hasSellIn(-2)
+                .hasQuality(2);
+    }
+
     private GildedRose createAndUpdateGildedRose(String itemName, int sellIn, int quality) {
         Item[] items = new Item[]{new Item(itemName, sellIn, quality)};
         GildedRose actual = new GildedRose(items);

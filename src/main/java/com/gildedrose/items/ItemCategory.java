@@ -22,9 +22,9 @@ public class ItemCategory {
         item.quality = item.quality - 1;
     }
 
-    protected void decrementQualityIfQualityGreaterThan0(Item item) {
+    protected void decreaseItemQualityInValueIfQualityGreaterThanZero(Item item, int value) {
         if (item.quality > 0) {
-            item.quality = item.quality - 1;
+            item.quality = item.quality - value;
         }
     }
 

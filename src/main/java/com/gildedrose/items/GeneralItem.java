@@ -13,7 +13,7 @@ public class GeneralItem extends ItemCategory {
     }
 
     private void update(Item item) {
-       decrementQualityIfQualityGreaterThan0(item);
+       decreaseItemQualityInValueIfQualityGreaterThanZero(item, 1);
 
         decrementSellIn(item);
 

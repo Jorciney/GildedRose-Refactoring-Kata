@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.items.AgedBrie;
 import com.gildedrose.items.BackStagePass;
+import com.gildedrose.items.Conjured;
 import com.gildedrose.items.GeneralItem;
 
 import java.util.stream.IntStream;
@@ -28,6 +29,9 @@ class GildedRose {
                 break;
             case BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT:
                 BackStagePass.updateItem(item);
+                break;
+            case CONJURED:
+                Conjured.updateItem(item);
                 break;
             case SULFURAS_HAND_OF_RAGNAROS:
                 return;
