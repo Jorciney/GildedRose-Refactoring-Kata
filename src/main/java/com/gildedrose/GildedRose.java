@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+import com.gildedrose.items.AgedBrie;
+import com.gildedrose.items.BackStagePass;
+import com.gildedrose.items.GeneralItem;
+
 import java.util.stream.IntStream;
 
 import static com.gildedrose.constants.ProductNames.*;
@@ -11,81 +15,25 @@ class GildedRose {
         this.items = items;
     }
 
-    public void updateQuality() {
+    public void updateItemQuality() {
         IntStream.range(0, items.length)
-                .forEach(this::updateQuality);
+                .forEach(this::updateItemQuality);
     }
 
-    private void updateQuality(int i) {
+    private void updateItemQuality(int i) {
         Item item = items[i];
         switch (item.name) {
             case AGED_BRIE:
-                udpateAgedBrie(item);
+                AgedBrie.updateItem(item);
                 break;
             case BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT:
-                updateBackstagePasses(item);
+                BackStagePass.updateItem(item);
                 break;
             case SULFURAS_HAND_OF_RAGNAROS:
                 return;
             default:
-                updateOtherItems(item);
+                GeneralItem.updateItem(item);
                 break;
         }
     }
-
-    private void updateOtherItems(Item item) {
-        if (item.quality > 0) {
-            decreaseItemQualityByOne(item);
-        }
-
-        decreaseSellInByOne(item);
-
-        if (item.sellIn < 0 && item.quality > 0) {
-            decreaseItemQualityByOne(item);
-        }
-    }
-
-    private void decreaseItemQualityByOne(Item item) {
-        item.quality = item.quality - 1;
-    }
-
-    private void updateBackstagePasses(Item item) {
-        increaseItemQualityByOne(item);
-
-        if (item.sellIn < 11 && item.quality < 50) {
-            increaseItemQualityByOne(item);
-        }
-
-        if (item.sellIn < 6 && item.quality < 50) {
-            increaseItemQualityByOne(item);
-        }
-
-        decreaseSellInByOne(item);
-
-        if (item.sellIn < 0) {
-            item.quality = 0;
-        }
-    }
-
-    private void udpateAgedBrie(Item item) {
-        if (item.quality < 50) {
-            increaseItemQualityByOne(item);
-        }
-
-        decreaseSellInByOne(item);
-
-        if (item.sellIn < 0 && item.quality < 50) {
-            increaseItemQualityByOne(item);
-        }
-    }
-
-    private void decreaseSellInByOne(Item item) {
-        item.sellIn = item.sellIn - 1;
-    }
-
-    private void increaseItemQualityByOne(Item item) {
-        item.quality = item.quality + 1;
-    }
-
-
 }

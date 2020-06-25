@@ -182,7 +182,7 @@ class GildedRoseTest {
     private GildedRose createAndUpdateGildedRose(String itemName, int sellIn, int quality) {
         Item[] items = new Item[]{new Item(itemName, sellIn, quality)};
         GildedRose actual = new GildedRose(items);
-        actual.updateQuality();
+        actual.updateItemQuality();
         return actual;
     }
 
